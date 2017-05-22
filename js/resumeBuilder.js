@@ -18,7 +18,7 @@ var bio = {
 	displaySkills: function() {
 		if (bio.skills.length) {
 			$("#header").append(HTMLskillsStart);
-			bio.skills.forEach(function(value){
+			bio.skills.forEach(function(value) {
 				$("#skills").append(HTMLskills.replace(data, value));
 			});
 		}
@@ -74,8 +74,8 @@ var work = {
 			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci leo, venenatis sed blandit tincidunt, aliquet ac neque. Curabitur ut placerat justo, mattis accumsan purus. Nunc ac lobortis lectus. Duis hendrerit purus tortor, quis gravida lorem pellentesque et. Fusce dignissim a felis et aliquam. Maecenas id turpis vel eros porttitor suscipit a ut nulla. Phasellus ac velit vitae arcu lobortis fringilla vitae nec quam. Etiam molestie erat consectetur ante porta malesuada. Proin faucibus arcu vitae nulla euismod hendrerit. Aenean fringilla neque et eleifend volutpat."
 		}
 	],
-	display: function(){
-		work.jobs.forEach(function(value){
+	display: function() {
+		work.jobs.forEach(function(value) {
 		$("#workExperience").append(HTMLworkStart);
 		var formattedEmployerTitle = HTMLworkEmployer.replace(data, value.employer) + HTMLworkTitle.replace(data, value.title);
 		$(".work-entry:last")
@@ -90,14 +90,32 @@ var work = {
 var projects = {
 	projects: [
 		{
-			title: "",
-			dates: "",
-			description: "",
+			title: "FEND - Portfolio",
+			dates: "May 2017",
+			description: "Portfolio for Udacity FEND",
+			images: []
+		},
+		{
+			title: "FEND - Resume",
+			dates: "May 2017",
+			description: "Resume for Udacity FEND",
 			images: []
 		}
 	],
 	display: function() {
+		projects.projects.forEach(function(value) {
+			$("#projects").append(HTMLprojectStart);
+			$(".project-entry:last")
+				.append(HTMLprojectTitle.replace(data, value.title))
+				.append(HTMLprojectDates.replace(data, value.dates))
+				.append(HTMLprojectDescription.replace(data, value.description));
 
+			value.images.forEach(function(value) {
+				$(".project-entry").append(HTMLprojectImage.replace(data, value));
+			});
+
+
+		});
 	}
 };
 
