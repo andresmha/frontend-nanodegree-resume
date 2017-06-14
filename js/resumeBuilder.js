@@ -22,15 +22,15 @@ var bio = {
 		twitter: "https://twitter.com/andru_h_a",
 		location: "Guayaquil"
 	},
-	skills: ["HTML5", "CSS3", "JavaScript"],
+	skills: ["HTML5", "CSS3", "JavaScript"]
 };
 
 //FUNCTIONS
 
 //Display general Bio Information
 bio.displayBio = function() {
-	$("#header").prepend(HTMLheaderRole.replace(data, bio.role));
-	$("#header").prepend(HTMLheaderName.replace(data, bio.name));
+	$("#header").prepend(HTMLheaderRole.replace(DATA, bio.role));
+	$("#header").prepend(HTMLheaderName.replace(DATA, bio.name));
 };
 
 //Display Contact Info
@@ -43,7 +43,7 @@ bio.displaySkills= function() {
 	if (bio.skills.length) {
 		$("#header").append(HTMLskillsStart);
 		bio.skills.forEach(function(value) {
-			$("#skills").append(HTMLskills.replace(data, value));
+			$("#skills").append(HTMLskills.replace(DATA, value));
 		});
 	}
 };
@@ -105,7 +105,7 @@ var work = {
 			dates: "2010 - 2016",
 			description: "Nunc ac lobortis lectus. Duis hendrerit purus tortor, quis gravida lorem pellentesque et. Fusce dignissim a felis et aliquam. Maecenas id turpis vel eros porttitor suscipit a ut nulla. Phasellus ac velit vitae arcu lobortis fringilla vitae nec quam. Etiam molestie erat consectetur ante porta malesuada. Proin faucibus arcu vitae nulla euismod hendrerit. Aenean fringilla neque et eleifend volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci leo, aliquet ac neque. Curabitur ut placerat justo, mattis accumsan purus. "
 		}
-	],
+	]
 };
 
 //FUNCTIONS
@@ -114,11 +114,11 @@ var work = {
 work.display = function() {
 	work.jobs.forEach(function(value) {
 	$("#workExperience").append(HTMLworkStart);
-	var formattedEmployerTitle = HTMLworkEmployer.replace(data, value.employer) + HTMLworkTitle.replace(data, value.title);
+	var formattedEmployerTitle = HTMLworkEmployer.replace(DATA, value.employer) + HTMLworkTitle.replace(DATA, value.title);
 	$(".work-entry:last")
 		.append(formattedEmployerTitle)
-		.append(HTMLworkDates.replace(data, value.dates))
-		.append(HTMLworkDescription.replace(data, value.description));
+		.append(HTMLworkDates.replace(DATA, value.dates))
+		.append(HTMLworkDescription.replace(DATA, value.description));
 	});
 };
 
@@ -141,8 +141,7 @@ var projects = {
 			description: "Resume for Udacity FEND",
 			images: []
 		}
-	],
-	
+	]
 };
 
 //FUNCTIONS
@@ -152,15 +151,13 @@ projects.display = function() {
 	projects.projects.forEach(function(value) {
 		$("#projects").append(HTMLprojectStart);
 		$(".project-entry:last")
-			.append(HTMLprojectTitle.replace(data, value.title))
-			.append(HTMLprojectDates.replace(data, value.dates))
-			.append(HTMLprojectDescription.replace(data, value.description));
+			.append(HTMLprojectTitle.replace(DATA, value.title))
+			.append(HTMLprojectDates.replace(DATA, value.dates))
+			.append(HTMLprojectDescription.replace(DATA, value.description));
 
 		value.images.forEach(function(value) {
-			$(".project-entry").append(HTMLprojectImage.replace(data, value));
+			$(".project-entry").append(HTMLprojectImage.replace(DATA, value));
 		});
-
-
 	});
 };
 
