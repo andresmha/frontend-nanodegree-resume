@@ -1,40 +1,64 @@
-//Interaction
-var data = "%data%";
+/**
+* Objects declaration
+*/
 
-//BIO
+//Constant value to be replaced
+var DATA = "%data%";
+
+/**
+* BIO Object
+*/
+
+ //Object Creation
 var bio = {
 	name: "Andres Hernandez",
 	role: "Front End Developer",
 	welcomeMessage: "Hello World",
-	biopic: "",
+	biopic: "images/fry.jpg",
 	contacts: {
-		mobile: "",
-		email: "",
-		github: "",
-		twitter: "",
-		location: ""
+		mobile: "0980528558",
+		email: "andru.h@gmail.com",
+		github: "https://github.com/andresmha",
+		twitter: "https://twitter.com/andru_h_a",
+		location: "Guayaquil"
 	},
 	skills: ["HTML5", "CSS3", "JavaScript"],
-	displaySkills: function() {
-		if (bio.skills.length) {
-			$("#header").append(HTMLskillsStart);
-			bio.skills.forEach(function(value) {
-				$("#skills").append(HTMLskills.replace(data, value));
-			});
-		}
-	},
-	displayBio: function() {
-		$("#header").prepend(HTMLheaderRole.replace(data, bio.role));
-		$("#header").prepend(HTMLheaderName.replace(data, bio.name));
-	},
-	display: function() {
-		bio.displayBio();
-		bio.displaySkills();
-	}
-
 };
 
-//EDUCATION
+//FUNCTIONS
+
+//Display general Bio Information
+bio.displayBio = function() {
+	$("#header").prepend(HTMLheaderRole.replace(data, bio.role));
+	$("#header").prepend(HTMLheaderName.replace(data, bio.name));
+};
+
+//Display Contact Info
+bio.displayContacts = function() {
+		
+};
+
+//Display listed Skills
+bio.displaySkills= function() {
+	if (bio.skills.length) {
+		$("#header").append(HTMLskillsStart);
+		bio.skills.forEach(function(value) {
+			$("#skills").append(HTMLskills.replace(data, value));
+		});
+	}
+};
+
+//General function to display all Bio information
+bio.display = function() {
+	bio.displayBio();
+	bio.displaySkills();
+};
+
+/**
+* EDUCATION Object
+*/
+
+//Object Creation
 var education = { 
 	schools: [
 		{
@@ -56,7 +80,15 @@ var education = {
 	]
 };
 
-//WORK 
+//FUNCTIONS
+
+//Display general Bio Information
+
+/**
+* WORK Object
+*/
+
+//Object Creation
 var work = {
 	jobs: [
 		{
@@ -71,22 +103,30 @@ var work = {
 			title: "Software Development Manager",
 			location: "Guayaquil - Ecuador",
 			dates: "2010 - 2016",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci leo, venenatis sed blandit tincidunt, aliquet ac neque. Curabitur ut placerat justo, mattis accumsan purus. Nunc ac lobortis lectus. Duis hendrerit purus tortor, quis gravida lorem pellentesque et. Fusce dignissim a felis et aliquam. Maecenas id turpis vel eros porttitor suscipit a ut nulla. Phasellus ac velit vitae arcu lobortis fringilla vitae nec quam. Etiam molestie erat consectetur ante porta malesuada. Proin faucibus arcu vitae nulla euismod hendrerit. Aenean fringilla neque et eleifend volutpat."
+			description: "Nunc ac lobortis lectus. Duis hendrerit purus tortor, quis gravida lorem pellentesque et. Fusce dignissim a felis et aliquam. Maecenas id turpis vel eros porttitor suscipit a ut nulla. Phasellus ac velit vitae arcu lobortis fringilla vitae nec quam. Etiam molestie erat consectetur ante porta malesuada. Proin faucibus arcu vitae nulla euismod hendrerit. Aenean fringilla neque et eleifend volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci leo, aliquet ac neque. Curabitur ut placerat justo, mattis accumsan purus. "
 		}
 	],
-	display: function() {
-		work.jobs.forEach(function(value) {
-		$("#workExperience").append(HTMLworkStart);
-		var formattedEmployerTitle = HTMLworkEmployer.replace(data, value.employer) + HTMLworkTitle.replace(data, value.title);
-		$(".work-entry:last")
-			.append(formattedEmployerTitle)
-			.append(HTMLworkDates.replace(data, value.dates))
-			.append(HTMLworkDescription.replace(data, value.description));
-		});
-	}
 };
 
-//PROJECTS
+//FUNCTIONS
+
+//Display Jobs
+work.display = function() {
+	work.jobs.forEach(function(value) {
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployerTitle = HTMLworkEmployer.replace(data, value.employer) + HTMLworkTitle.replace(data, value.title);
+	$(".work-entry:last")
+		.append(formattedEmployerTitle)
+		.append(HTMLworkDates.replace(data, value.dates))
+		.append(HTMLworkDescription.replace(data, value.description));
+	});
+};
+
+/**
+* PROJECTS Object
+*/
+
+//Object Creation
 var projects = {
 	projects: [
 		{
@@ -102,25 +142,31 @@ var projects = {
 			images: []
 		}
 	],
-	display: function() {
-		projects.projects.forEach(function(value) {
-			$("#projects").append(HTMLprojectStart);
-			$(".project-entry:last")
-				.append(HTMLprojectTitle.replace(data, value.title))
-				.append(HTMLprojectDates.replace(data, value.dates))
-				.append(HTMLprojectDescription.replace(data, value.description));
-
-			value.images.forEach(function(value) {
-				$(".project-entry").append(HTMLprojectImage.replace(data, value));
-			});
-
-
-		});
-	}
+	
 };
 
+//FUNCTIONS
+
+//Display projects
+projects.display = function() {
+	projects.projects.forEach(function(value) {
+		$("#projects").append(HTMLprojectStart);
+		$(".project-entry:last")
+			.append(HTMLprojectTitle.replace(data, value.title))
+			.append(HTMLprojectDates.replace(data, value.dates))
+			.append(HTMLprojectDescription.replace(data, value.description));
+
+		value.images.forEach(function(value) {
+			$(".project-entry").append(HTMLprojectImage.replace(data, value));
+		});
 
 
+	});
+};
+
+/**
+* Display Page
+*/
 
 //bio
 bio.display();
@@ -133,10 +179,12 @@ projects.display();
 
 
 
-//Internationalize BUtton for testing
+
+
+
+/*
+//Internationalize Button for testing
 $("#main").append(internationalizeButton);
-
-
 
 //FUNCTIONS
 
@@ -144,4 +192,4 @@ $("#main").append(internationalizeButton);
 function inName(name){
 	name = name.split(" ");
 	return name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase() + " " + name[1].toUpperCase();
-}
+}*/
