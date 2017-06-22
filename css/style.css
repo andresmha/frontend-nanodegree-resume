@@ -26,9 +26,10 @@ h6 {
 
 h1 {
   font-size: 40px;
-  color: #f5a623;
+  color: #999;
   line-height: 48px;
   display: inline;
+  text-transform: uppercase;
 }
 
 h2 {
@@ -61,6 +62,10 @@ h5 {
 
 }
 
+.header-role {
+  font-size: 20px;
+  color: #999;
+}
 
 .date-text {
   font-style: italic;
@@ -129,7 +134,7 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #202020;
 }
 
 .flex-box {
