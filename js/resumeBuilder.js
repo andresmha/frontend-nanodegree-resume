@@ -1,3 +1,4 @@
+(function() {
 "use strict";
 /**
  * Objects declaration
@@ -218,3 +219,4 @@ education.display();
 
 //Display Map
 $("#mapDiv").append(googleMap);
+}());
